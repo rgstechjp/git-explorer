@@ -16,7 +16,7 @@ RESET="\033[0m"
 hr() { printf '%0.s─' {1..60}; echo; }
 header() { echo; echo -e "${BOLD}${CYAN}▶ $1${RESET}"; hr; }
 cmd() { echo -e "${YELLOW}\$ $1${RESET}"; eval "$1"; echo; }
-
+echo "wip"
 echo
 echo -e "${BOLD}${GREEN}╔══════════════════════════════════════════╗${RESET}"
 echo -e "${BOLD}${GREEN}║   Git Explorer — Class 1 Workshop        ║${RESET}"
