@@ -1,0 +1,7 @@
+{
+  "name": "Instructor / 講師",
+  "github": "ryukyuglocal",
+  "role": "Git Sensei",
+  "fact": "Has recovered a 'deleted forever' repo using reflog. Nothing is truly lost in Git.",
+  "favorite_git_command": "git log --oneline --graph --all --decorate"
+}
