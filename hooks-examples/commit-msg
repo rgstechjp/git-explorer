@@ -1,0 +1,23 @@
+#!/bin/bash
+# Enforces: feat|fix|docs|chore|test: description
+# 形式を強制: feat|fix|docs|chore|test: 説明
+
+MSG=$(cat "$1")
+PATTERN="^(feat|fix|docs|chore|test|refactor|style): .{5,}"
+
+if ! echo "$MSG" | grep -qP "$PATTERN"; then
+  echo ""
+  echo "ERROR: Commit message format is wrong."
+  echo "エラー：コミットメッセージの形式が間違っています。"
+  echo ""
+  echo "Required format / 必要な形式:"
+  echo "  feat: add login page"
+  echo "  fix: resolve null pointer in auth"
+  echo "  docs: update README"
+  echo ""
+  echo "Your message was / あなたのメッセージ: \"$MSG\""
+  echo ""
+  exit 1
+fi
+
+exit 0

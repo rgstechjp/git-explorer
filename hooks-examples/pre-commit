@@ -1,0 +1,19 @@
+#!/bin/bash
+# Blocks commits containing hardcoded secrets in staged files
+# ステージングファイルにシークレットが含まれる場合にコミットをブロック
+
+PATTERNS="(password|api_key|secret_key|token)\s*=\s*['\"][^'\"]{6,}"
+
+if git diff --cached --name-only | xargs grep -iE "$PATTERNS" 2>/dev/null; then
+  echo ""
+  echo "ERROR: Possible secret found in staged files."
+  echo "エラー：ステージングファイルにシークレットが見つかりました。"
+  echo ""
+  echo "1. Rotate the credential immediately / まず認証情報を無効化する"
+  echo "2. Remove it from your code / コードから削除する"
+  echo "3. Then commit again / その後コミットする"
+  echo ""
+  exit 1
+fi
+
+exit 0
