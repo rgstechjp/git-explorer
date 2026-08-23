@@ -1,0 +1,7 @@
+{
+  "name": "Your Name / あなたの名前",
+  "github": "your-github-username",
+  "role": "Developer / エンジニア",
+  "fact": "Write one fun or interesting thing about yourself! / 自分について面白いことを書いてください！",
+  "favorite_git_command": "git log --oneline --graph --all"
+}
