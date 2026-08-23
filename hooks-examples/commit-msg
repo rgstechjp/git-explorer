@@ -5,7 +5,7 @@
 MSG=$(cat "$1")
 PATTERN="^(feat|fix|docs|chore|test|refactor|style): .{5,}"
 
-if ! echo "$MSG" | grep -qP "$PATTERN"; then
+if ! echo "$MSG" | grep -qE "$PATTERN"; then
   echo ""
   echo "ERROR: Commit message format is wrong."
   echo "エラー：コミットメッセージの形式が間違っています。"
