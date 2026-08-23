@@ -20,6 +20,58 @@ git log --oneline
 
 ---
 
+## SLIDE 4 — Open the Box / 箱を開ける
+
+> Teacher asks: who has seen a mystery merge commit after `git pull`? Who has had a detached HEAD?  
+> 先生が聞く：`git pull`後に謎のマージコミットを見たことがある人？デタッチドHEADになったことがある人？
+
+**Look inside `.git/` — this is where ALL the answers are:**  
+**`.git/`の中を見る — すべての答えはここにある:**
+
+```bash
+ls -la .git/
+```
+
+You should see: / こう表示される:
+
+```
+HEAD        ← where YOU are right now / 今あなたがいる場所
+config      ← repo settings / リポジトリの設定
+objects/    ← every file and commit ever stored / 保存された全ファイルとコミット
+refs/       ← all your branches and tags / 全ブランチとタグ
+logs/       ← reflog — the undo button (Class 3) / アンドゥボタン（クラス3）
+hooks/      ← automation scripts (Class 3) / 自動化スクリプト（クラス3）
+index       ← the staging area / ステージングエリア
+```
+
+> Everything in all 3 classes lives in this one folder.  
+> 3クラス全てのことが、このフォルダの中にある。
+
+**Answer question 1: Why did `git pull` create a merge commit?**  
+**質問1の答え：なぜ`git pull`がマージコミットを作った？**
+
+```bash
+# pull = fetch + merge
+# When your branch and remote diverged, Git joined them with a merge commit
+# あなたのブランチとリモートが分岐していたので、Gitがマージコミットで結合した
+git log --oneline --graph -5   # see the shape — that's the story
+```
+
+**Answer question 2: What is detached HEAD?**  
+**質問2の答え：デタッチドHEADとは？**
+
+```bash
+cat .git/HEAD
+# Normal: ref: refs/heads/main  ← points to a BRANCH NAME
+# Detached: a1b2c3d4...         ← points directly to a SHA
+```
+
+> HEAD normally points to a branch name.  
+> Detached = it points to a SHA directly. We'll see exactly why on Slide 6.  
+> HEADは通常ブランチ名を指す。デタッチド = SHAを直接指す。スライド6で詳しくやる。
+
+---
+
 ## SLIDE 5 — The 4 Git Objects / 4つのGitオブジェクト
 
 **Step 1: Read a real Commit object / コミットオブジェクトを読む**
