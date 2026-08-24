@@ -1,3 +1,6 @@
+Name: Shunsuke TAMASHIRO
+GitHub: tamasyun
+Exercise 1: https://github.com/tamasyun/git-practice-tamasyun
 ## Q1
 ERROR: Possible secret found in staged files.
 エラー：ステージングファイルにシークレットが見つかりました。
@@ -17,3 +20,23 @@ Required format / 必要な形式:
 
 precious work 1
 precious work 2
+
+## Q3
+## Q3
+
+```text
+8049401 HEAD@{1}: reset: moving to HEAD~2
+800b148 HEAD@{2}: commit: wip: precious 2
+302992c HEAD@{3}: commit: wip: precious 1
+```
+
+`git reflog` から `wip: precious 2` のコミットを確認し、`git reset --hard 'HEAD@{1}'` で復旧した。
+
+復旧後：
+
+```text
+800b148 (HEAD -> exercise1/tamasyun) HEAD@{0}: reset: moving to HEAD@{1}
+8049401 HEAD@{1}: reset: moving to HEAD~2
+800b148 (HEAD -> exercise1/tamasyun) HEAD@{2}: commit: wip: precious 2
+302992c HEAD@{3}: commit: wip: precious 1
+```
