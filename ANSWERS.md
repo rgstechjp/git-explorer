@@ -16,3 +16,4 @@ Required format / 必要な形式:
   docs: update README
 
 precious work 1
+precious work 2
