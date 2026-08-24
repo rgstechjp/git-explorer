@@ -15,3 +15,4 @@ Required format / 必要な形式:
   fix: resolve null pointer in auth
   docs: update README
 
+precious work 1
