@@ -1,0 +1,42 @@
+## Exercise 2a
+
+### Task 1 — TODO をブロックする
+
+#### 1. 「TODO」を含むファイルがブロックされたログ（エラー）
+
+$ echo "TODO: fix later" > test_todo.txt && git add test_todo.txt && git commit -m "test: add todo"
+TODO: fix later
+ERROR: Possible secret found in staged files.
+エラー：ステージングファイルにシークレットが見つかりました。
+1.Rotate the credential immediately / まず認証情報を無効化する
+2.Remove it from your code / コードから削除する
+3.Then commit again / その後コミットする
+
+#### 2. きれいなファイルがコミットできたログ（成功）
+$ echo "Hello World" > test_clean.txt && git add test_clean.txt && git commit -m "test: clean file"
+[hooks2a/04-NK 72a1716] test: clean file
+1 file changed, 1 deletion(-)
+delete mode 100644 test_todo.txt
+
+### Task 2 — メッセージの長さルール
+
+#### 1. 50文字以上の長いメッセージが拒否されたログ（エラー）
+$ git commit -m "This is a very long commit message that exceeds fifty characters in total length"
+ERROR: Commit message format is wrong.
+エラー：コミットメッセージの形式が間違っています。
+Required format / 必要な形式:
+feat: add login page
+fix: resolve null pointer in auth
+docs: update README
+Your message was / あなたのメッセージ: "This is a very long commit message that exceeds fifty characters in total length"
+
+#### 2. 短い正しい形式のメッセージが通ったログ（成功）
+$ git commit -m "fix: valid short commit message"
+[hooks2a/04-NK 92b63cd] fix: valid short commit message
+1 file changed, 1 deletion(-)
+
+
+### Task 3 — 先生のように説明
+
+Gitフックにおいて、`exit 0` はフックの処理が正常に完了したことを表し、Gitのコミットやプッシュ等の操作をそのまま許可・続行させる。一方で `exit 1` はエラー（異常終了）を表し、Gitの操作を即座に中断・ブロックする。
+また、`.git/hooks/` ディレクトリは各開発者のローカル環境専用の設定・管理領域であり、Gitのバージョン管理対象外（追跡対象外）となっているためGitHubへプッシュできない。これは、リポジトリをクローンした際に悪意のあるスクリプトが開発者の環境で意図せず自動実行されてしまうセキュリティリスクを防ぐ設計にもなっている。
